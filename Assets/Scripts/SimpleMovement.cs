@@ -5,13 +5,17 @@ using UnityEngine;
 public class SimpleMovement : MonoBehaviour
 {
     public float MovementSpeed = 2.5f;
+    public bool reverse = false;
+
+    public bool useHop = false;
     public bool useSprint = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (reverse)
+            MovementSpeed *= -1;
     }
 
     // Update is called once per frame
