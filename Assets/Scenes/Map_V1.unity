@@ -1431,9 +1431,9 @@ GameObject:
   - component: {fileID: 890633695}
   - component: {fileID: 890633694}
   - component: {fileID: 890633693}
+  - component: {fileID: 890633692}
   - component: {fileID: 890633696}
   - component: {fileID: 890633697}
-  - component: {fileID: 890633698}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1441,6 +1441,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &890633692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890633691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ea4c8280067b34faf9575f36f7034f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementSpeed: 2.5
+  useSprint: 0
+  JumpForce: 12
+  Gravity: 1
 --- !u!114 &890633693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,7 +1469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4191ce72cfe91ba4db8838baed76946b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uName: 
+  name: 2CAN0
   health: 100
 --- !u!114 &890633694
 MonoBehaviour:
@@ -1477,14 +1493,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890633691}
-  m_LocalRotation: {x: -0, y: -0.9953122, z: 0, w: -0.09671427}
-  m_LocalPosition: {x: 0, y: 2.85, z: 12.73}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.41772, y: 1, z: -12.627299}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_RootOrder: 23
-  m_LocalEulerAnglesHint: {x: 0, y: -191.1, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &890633696
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1493,12 +1509,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890633691}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.9424727
-  m_Height: 2.8099155
+  m_Radius: 0.5
+  m_Height: 1.61
   m_Direction: 1
-  m_Center: {x: 0, y: -0.94, z: 0}
+  m_Center: {x: 0, y: -0.20893955, z: 0}
 --- !u!54 &890633697
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1511,28 +1527,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &890633698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890633691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3fbe3ef61d9bc14e9b24f1f353f0588, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ground: {fileID: 0}
-  acceleration: 20
-  maxSpeed: 7.5
-  useSprint: 1
-  reverse: 0
-  jumpForce: 11.2
 --- !u!1001 &905303361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3195,10 +3193,9 @@ GameObject:
   - component: {fileID: 2003935528}
   - component: {fileID: 2003935527}
   - component: {fileID: 2003935526}
-  - component: {fileID: 2003935530}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3210,7 +3207,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003935525}
-  m_Material: {fileID: 13400000, guid: 54c6deced8438d847aa674660cae0e10, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3277,20 +3274,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &2003935530
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003935525}
-  m_Material: {fileID: 13400000, guid: 54c6deced8438d847aa674660cae0e10, type: 2}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &2005198221
 PrefabInstance:
   m_ObjectHideFlags: 0

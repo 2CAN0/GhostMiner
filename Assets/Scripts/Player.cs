@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public string name;
+    public string uName;
     public float health;
 
     // Start is called before the first frame update
@@ -17,5 +17,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         
+            
     }
 }
