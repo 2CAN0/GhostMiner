@@ -186,42 +186,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &26732264 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6004455315702914652, guid: 8215b5019a3532f4b9a7d21dba672ec0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1713206787}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &26732268
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26732264}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.3207631
-  m_Height: 4.100134
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.20515537, z: 0.1708355}
---- !u!54 &26732269
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26732264}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &30341004 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1554023618411947355, guid: f9b9a0338a5834c4bbbae8031da7eb53,
@@ -6546,7 +6510,43 @@ PrefabInstance:
       propertyPath: m_Range
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 996507909780529231, guid: 8215b5019a3532f4b9a7d21dba672ec0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -17.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 996507909780529231, guid: 8215b5019a3532f4b9a7d21dba672ec0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 996507909780529264, guid: 8215b5019a3532f4b9a7d21dba672ec0,
+        type: 3}
+      propertyPath: m_Height
+      value: 4.014149
+      objectReference: {fileID: 0}
+    - target: {fileID: 996507909780529264, guid: 8215b5019a3532f4b9a7d21dba672ec0,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.33788323
+      objectReference: {fileID: 0}
+    - target: {fileID: 996507909780529264, guid: 8215b5019a3532f4b9a7d21dba672ec0,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.1584606
+      objectReference: {fileID: 0}
+    - target: {fileID: 996507909780529264, guid: 8215b5019a3532f4b9a7d21dba672ec0,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.0000000012857729
+      objectReference: {fileID: 0}
+    - target: {fileID: 996507909780529264, guid: 8215b5019a3532f4b9a7d21dba672ec0,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.12709785
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2339040965532934443, guid: 8215b5019a3532f4b9a7d21dba672ec0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8215b5019a3532f4b9a7d21dba672ec0, type: 3}
 --- !u!1 &1725302502 stripped
 GameObject:
@@ -6690,6 +6690,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Profile: {fileID: 11400000, guid: 2566a7d67c1e4d546b138b92b0079113, type: 2}
   m_StaticLightingSkyUniqueID: 0
+  m_SkySettings: {fileID: 0}
+  m_SkySettingsFromProfile: {fileID: 0}
 --- !u!114 &1763311261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7293,28 +7295,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &2033220885 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1979449311602573146, guid: 8215b5019a3532f4b9a7d21dba672ec0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1713206787}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &2033220890
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2033220885}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 1
 --- !u!1 &2034289765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 252074628319708429, guid: f9b9a0338a5834c4bbbae8031da7eb53,

@@ -7,7 +7,7 @@ public class RigidBodyMovement : MonoBehaviour
     private Rigidbody rb;
     public Collider ground;
 
-    public float acceleration = 20f;
+    public float acceleration = 200f;
     public float maxSpeed = 7.5f;
     public bool useSprint = true;
     public bool reverse = false;
