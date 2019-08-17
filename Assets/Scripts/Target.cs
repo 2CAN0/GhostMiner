@@ -4,7 +4,7 @@ public class Target : MonoBehaviour
 {
     public float health = 100f;
 
-    public void TakeDamage(float amount)
+    public virtual void TakeDamage(float amount)
     {
         health -= amount;
 
@@ -16,7 +16,7 @@ public class Target : MonoBehaviour
         }
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         Destroy(gameObject);
     }

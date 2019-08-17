@@ -22,7 +22,19 @@ public class LockToObject : MonoBehaviour
 
         if (useRotation)
         {
-            this.transform.rotation = Quaternion.Euler(otherObject.transform.rotation.eulerAngles + rotationOffset);
+            try
+            {
+                this.transform.rotation = Quaternion.Euler(otherObject.transform.rotation.eulerAngles + rotationOffset);
+            }
+            catch
+            {
+                Destroy(this.gameObject);
+            }
+        }
+
+        if (otherObject.transform.position == null)
+        {
+            Destroy(this.gameObject);
         }
     }
 }
