@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
     private int selectedIndex = 0;
     private int prevSelectedIndex = 0;
 
+    public GameObject warning;
+    public int itemsToUse = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +73,11 @@ public class Player : MonoBehaviour
                 ChangeSelected(GetInvKey(selectedIndex));
 
             prevSelectedIndex = selectedIndex;
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            UseItem(inventory[GetInvKey(selectedIndex)][0], itemsToUse);
         }
     }
 
@@ -125,8 +133,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    List<GameObject> gobjs = new List<GameObject>();
-                    gobjs.Add(resource);
+                    List<GameObject> gobjs = new List<GameObject> { resource };
                     inventory.Add(gobjName, gobjs);
 
                     // <= 1 since the item is already added to your inventory if this statement was before the add to list it would be <= 0
@@ -155,8 +162,9 @@ public class Player : MonoBehaviour
         invItem.ChangeSelected(inventory[key][0], inventory[key].Count);
     }
 
-    public void UseItem(GameObject gobj)
+    public void UseItem(GameObject gobj, int amount)
     {
+
         string gobjName = gobj.name;
         if (gobj.name.Contains("_"))
         {
@@ -165,13 +173,45 @@ public class Player : MonoBehaviour
 
         if (inventory.ContainsKey(gobjName))
         {
-            inventory[gobjName].RemoveAt(inventory[gobjName].Count - 1);
+            //Checking if the user has enhough items of a certain resource
+            if ((inventory[gobjName].Count) - amount >= 0)
+            {
+                for (int iGobj = amount; iGobj > 0; iGobj--)
+                {
+                    inventory[gobjName].RemoveAt(inventory[gobjName].Count - 1);
+                    Debug.Log("Used item: " + gobjName);
+                }
+
+                if(inventory[gobjName].Count <= 0)
+                {
+                    inventory.Remove(gobjName);
+                }
+
+                invItemSpawn.GetComponent<InventoryItem>().UseItem(amount);
+
+                PrintItemList(inventory);
+            }
+            else
+            {
+                TextMeshProUGUI textWarning = warning.GetComponent<TextMeshProUGUI>();
+                if (textWarning != null)
+                {
+                    textWarning.text = "You need more resources to do this!";
+                    StartCoroutine(ShowWarning());
+                }
+            }
         }
         else
         {
             Debug.Log("No Item in list");
         }
+    }
 
-        PrintItemList(inventory);
+    IEnumerator ShowWarning()
+    {
+        warning.SetActive(true);
+        //Debug.Log("Showing warning");
+        yield return new WaitForSeconds(2);
+        warning.SetActive(false);
     }
 }

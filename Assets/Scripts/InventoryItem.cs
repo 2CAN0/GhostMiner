@@ -12,14 +12,12 @@ public class InventoryItem : MonoBehaviour
 
     public int itemCount;
     public string gobjName;
-    private Transform tf;
 
     // Start is called before the first frame update
     void Start()
     {
         //inventoryItem = new GameObject();
         itemCount = 0;
-        tf = inventoryItem.transform;
         textCount.SetActive(false);
         inventoryItem.SetActive(false);
     }
@@ -29,6 +27,7 @@ public class InventoryItem : MonoBehaviour
     {
         Vector3 rotation = inventoryItem.transform.rotation.eulerAngles;
         rotation.y += rotationSpeed;
+        inventoryItem.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
     }
 
     public void ChangeSelected(GameObject selected, int itemCount)
@@ -36,8 +35,11 @@ public class InventoryItem : MonoBehaviour
         this.itemCount = itemCount;
         Debug.Log("Changed to: " + selected.name.Split('_')[0] + ". There are " + this.itemCount + " in your inv");
 
+        // Replacing the Mesh and Materials to change the selected inventory item;
         inventoryItem.GetComponent<MeshFilter>().mesh = selected.GetComponent<MeshFilter>().mesh;
         inventoryItem.GetComponent<MeshRenderer>().materials = selected.GetComponent<MeshRenderer>().materials;
+
+        inventoryItem.transform.rotation = selected.transform.rotation;
 
         inventoryItem.transform.localScale = selected.transform.localScale;
         inventoryItem.SetActive(true);
@@ -58,14 +60,15 @@ public class InventoryItem : MonoBehaviour
         itemName.SetActive(false);
     }
 
-    public void UsedItem()
+    public void UseItem(int amount)
     {
-        itemCount -= 1;
+        itemCount -= amount;
         textCount.GetComponent<TextMeshProUGUI>().text = itemCount.ToString();
         if(itemCount <= 0)
         {
             textCount.SetActive(false);
             itemName.SetActive(false);
+            inventoryItem.SetActive(false);
         }
     }
 }
