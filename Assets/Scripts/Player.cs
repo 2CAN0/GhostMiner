@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -125,7 +126,7 @@ public class Player : MonoBehaviour
                     inventory[gobjName].Add(resource);
 
                     if (gobjName == invItemSpawn.GetComponent<InventoryItem>().gobjName)
-                        invItemSpawn.GetComponent<InventoryItem>().itemCount++;
+                        UpdateItemCount();
                 }
                 else
                 {
@@ -133,13 +134,19 @@ public class Player : MonoBehaviour
                     gobjs.Add(resource);
                     inventory.Add(gobjName, gobjs);
 
-                    //if(inventory.Count <= 0)
-                    ChangeSelected(gobjName);
+                    if(inventory.Count == 0)
+                        ChangeSelected(gobjName);
                 }
             }
         }
 
         PrintItemList(inventory);
+    }
+
+    public void UpdateItemCount()
+    {
+        invItemSpawn.GetComponent<InventoryItem>().itemCount++;
+        invItemSpawn.GetComponent<InventoryItem>().textCount.GetComponent<TextMeshProUGUI>().text = invItemSpawn.GetComponent<InventoryItem>().itemCount.ToString();
     }
 
     public void ChangeSelected(string key)

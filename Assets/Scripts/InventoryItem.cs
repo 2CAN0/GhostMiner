@@ -20,6 +20,8 @@ public class InventoryItem : MonoBehaviour
         //inventoryItem = new GameObject();
         itemCount = 0;
         tf = inventoryItem.transform;
+        textCount.SetActive(false);
+        inventoryItem.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,7 +40,9 @@ public class InventoryItem : MonoBehaviour
         inventoryItem.GetComponent<MeshRenderer>().materials = selected.GetComponent<MeshRenderer>().materials;
 
         inventoryItem.transform.localScale = selected.transform.localScale;
+        inventoryItem.SetActive(true);
 
+        textCount.SetActive(true);
         textCount.GetComponent<TextMeshProUGUI>().text = itemCount+"";
 
         gobjName = selected.name.Split('_')[0];
