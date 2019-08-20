@@ -10,13 +10,16 @@ public class InventoryItem : MonoBehaviour
     public GameObject itemName;   
     public GameObject inventoryItem;
 
-    private int itemCount;
+    public int itemCount;
+    public string gobjName;
+    private Transform tf;
 
     // Start is called before the first frame update
     void Start()
     {
         //inventoryItem = new GameObject();
         itemCount = 0;
+        tf = inventoryItem.transform;
     }
 
     // Update is called once per frame
@@ -24,27 +27,30 @@ public class InventoryItem : MonoBehaviour
     {
         Vector3 rotation = inventoryItem.transform.rotation.eulerAngles;
         rotation.y += rotationSpeed;
-        inventoryItem.transform.rotation = Quaternion.Euler(rotation);
     }
 
     public void ChangeSelected(GameObject selected, int itemCount)
     {
         this.itemCount = itemCount;
         Debug.Log("Changed to: " + selected.name.Split('_')[0] + ". There are " + this.itemCount + " in your inv");
-      
-        inventoryItem = selected;
 
-        textCount.SetActive(true);
-        
+        inventoryItem.GetComponent<MeshFilter>().mesh = selected.GetComponent<MeshFilter>().mesh;
+        inventoryItem.GetComponent<MeshRenderer>().materials = selected.GetComponent<MeshRenderer>().materials;
+
+        inventoryItem.transform.localScale = selected.transform.localScale;
+
         textCount.GetComponent<TextMeshProUGUI>().text = itemCount+"";
-        itemName.GetComponent<TextMeshProUGUI>().text = selected.name.Split('_')[0];
+
+        gobjName = selected.name.Split('_')[0];
+        itemName.GetComponent<TextMeshProUGUI>().text = gobjName;
+
         StartCoroutine(TextFlip());
     }
 
     IEnumerator TextFlip()
     {
         itemName.SetActive(true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         itemName.SetActive(false);
     }
 

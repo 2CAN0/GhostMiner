@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 2767918772510555340}
   - component: {fileID: 2767918772510555337}
   m_Layer: 0
-  m_Name: Stone_1
+  m_Name: Stone_DropItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,8 +106,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2767918772510555330}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.117792, y: 32.25, z: 43.072582}
+  m_LocalRotation: {x: -0.49991274, y: 0.50008726, z: 0.49991274, w: 0.50008726}
+  m_LocalPosition: {x: 84.45715, y: 17.182812, z: 24.045898}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 2767918771416828478}

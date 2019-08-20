@@ -116,19 +116,25 @@ public class Player : MonoBehaviour
             gobjName = gobjName.Split('_')[0];
         }
 
-        foreach(GameObject resource in resources)
+        foreach (GameObject resource in resources)
         {
             if (resource.name.Contains(gobjName))
             {
                 if (inventory.ContainsKey(gobjName))
                 {
                     inventory[gobjName].Add(resource);
+
+                    if (gobjName == invItemSpawn.GetComponent<InventoryItem>().gobjName)
+                        invItemSpawn.GetComponent<InventoryItem>().itemCount++;
                 }
                 else
                 {
                     List<GameObject> gobjs = new List<GameObject>();
                     gobjs.Add(resource);
                     inventory.Add(gobjName, gobjs);
+
+                    //if(inventory.Count <= 0)
+                    ChangeSelected(gobjName);
                 }
             }
         }
