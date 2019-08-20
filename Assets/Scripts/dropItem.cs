@@ -35,7 +35,7 @@ public class dropItem : MonoBehaviour
     {
         if (collision.collider.tag == "Ground")
         {
-            Debug.Log("Disabled Gravity");
+            //Debug.Log("Disabled Gravity");
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.useGravity = false;
             startBounce = true;
@@ -46,14 +46,14 @@ public class dropItem : MonoBehaviour
 
         if (collision.collider.tag == "Player")
         {
-            Debug.Log("Hit Player");
+            //Debug.Log("Hit Player");
             Player player = collision.collider.GetComponent<Player>();
             if (player != null)
             {
-                player.AddItem(this.gameObject);
+                player.AddItem(gameObject);
             }
 
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

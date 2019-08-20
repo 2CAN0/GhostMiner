@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
 
     public Dictionary<string, List<GameObject>> inventory;
     private Vector3 spawnPosition;
+    public GameObject[] resources;
+
+    public GameObject invItemSpawn;
+    private int selectedIndex = 0;
+    private int prevSelectedIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -44,12 +49,60 @@ public class Player : MonoBehaviour
                 transform.position = spawnPosition;
             }
         }
-            
+
+        if (inventory.Count > 0)
+        {
+            float mouseWheel = Input.GetAxis("Mouse ScrollWheel");
+            selectedIndex += (int)mouseWheel;
+            //Debug.Log("MouseWheel: "+mouseWheel);
+
+            if (selectedIndex >= inventory.Count)
+            {
+                selectedIndex = inventory.Count - 1;
+            }
+            else if (selectedIndex < 0)
+            {
+                selectedIndex = 0;
+            }
+
+            if (selectedIndex != prevSelectedIndex)
+                ChangeSelected(GetInvKey(selectedIndex));
+
+            prevSelectedIndex = selectedIndex;
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            UseItem(inventory["Stone"][0]);
+        }
+    }
+
+    private string GetInvKey(int index)
+    {
+        if (index < inventory.Count)
+        {
+            string key = null;
+            int i = 0;
+            foreach (string k in inventory.Keys)
+            {
+                if (i == index)
+                {
+                    key = k;
+                    break;
+                }
+                i += 1;
+            }
+            return key;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public void PrintItemList(Dictionary<string, List<GameObject>> dict)
     {
-        foreach(string key in dict.Keys)
+        foreach (string key in dict.Keys)
         {
             print(key + ": " + dict[key].Count);
         }
@@ -63,18 +116,32 @@ public class Player : MonoBehaviour
             gobjName = gobjName.Split('_')[0];
         }
 
-        if (inventory.ContainsKey(gobjName))
+        foreach(GameObject resource in resources)
         {
-            inventory[gobjName].Add(gobj);
-        }
-        else
-        {
-            List<GameObject> gobjs = new List<GameObject>();
-            gobjs.Add(gobj);
-            inventory.Add(gobjName, gobjs);
+            if (resource.name.Contains(gobjName))
+            {
+                if (inventory.ContainsKey(gobjName))
+                {
+                    inventory[gobjName].Add(resource);
+                }
+                else
+                {
+                    List<GameObject> gobjs = new List<GameObject>();
+                    gobjs.Add(resource);
+                    inventory.Add(gobjName, gobjs);
+                }
+            }
         }
 
         PrintItemList(inventory);
+    }
+
+    public void ChangeSelected(string key)
+    {
+        Debug.Log("Hello World");
+        InventoryItem invItem = invItemSpawn.GetComponent<InventoryItem>();
+
+        invItem.ChangeSelected(inventory[key][0], inventory[key].Count);
     }
 
     public void UseItem(GameObject gobj)
