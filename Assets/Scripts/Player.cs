@@ -71,11 +71,6 @@ public class Player : MonoBehaviour
 
             prevSelectedIndex = selectedIndex;
         }
-
-        if (Input.GetButtonDown("Fire2"))
-        {
-            UseItem(inventory["Stone"][0]);
-        }
     }
 
     private string GetInvKey(int index)
@@ -126,7 +121,7 @@ public class Player : MonoBehaviour
                     inventory[gobjName].Add(resource);
 
                     if (gobjName == invItemSpawn.GetComponent<InventoryItem>().gobjName)
-                        UpdateItemCount();
+                        UpdateItemCount(selectedIndex);
                 }
                 else
                 {
@@ -134,8 +129,11 @@ public class Player : MonoBehaviour
                     gobjs.Add(resource);
                     inventory.Add(gobjName, gobjs);
 
-                    if(inventory.Count == 0)
+                    // <= 1 since the item is already added to your inventory if this statement was before the add to list it would be <= 0
+                    if (inventory.Count <= 1)
+                    {
                         ChangeSelected(gobjName);
+                    }
                 }
             }
         }
@@ -143,9 +141,9 @@ public class Player : MonoBehaviour
         PrintItemList(inventory);
     }
 
-    public void UpdateItemCount()
+    public void UpdateItemCount(int index)
     {
-        invItemSpawn.GetComponent<InventoryItem>().itemCount++;
+        invItemSpawn.GetComponent<InventoryItem>().itemCount = inventory[GetInvKey(index)].Count;
         invItemSpawn.GetComponent<InventoryItem>().textCount.GetComponent<TextMeshProUGUI>().text = invItemSpawn.GetComponent<InventoryItem>().itemCount.ToString();
     }
 
